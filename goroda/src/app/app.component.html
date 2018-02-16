@@ -1,0 +1,89 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="wrapper">
+  <div *ngIf="globalVar.showContent" class="field">
+    <div *ngIf="!show" class="input">
+      <div *ngIf="!services.fileopen">
+        <span> Загрузите список городов (txt-файл): </span>
+        <input type="file" id="file" name="file" (change)="services.readFile($event)"/>
+      </div>
+      <div>
+        <button *ngIf="services.fileopen" (click)="restartGame()">Начать заново</button>
+      </div>
+    </div>
+
+    <div *ngIf="!show && services.fileopen" class="center">
+      <button (click)="startButton($event)">
+        <div *ngIf="!recognizing"><img id="start_img" src="../assets/images/mic.gif" alt="Голосовой ввод"></div>
+        <div *ngIf="recognizing"><img id="start_img" src="../assets/images/mic-slash.gif" alt="Отключить микрофон"></div>
+      </button>
+
+    </div>
+
+    <div *ngIf="!show && services.fileopen" class="human">
+      <span>Напишите название города:</span>
+      <input type="text" [value]="townTitle" placeholder="" #town (keydown)="pressEnter($event, town.value)"/>
+      <button (click)="checkHumanTown(town.value)"> Мой вариант </button>
+      <button (click)="stopGame()"> Я сдаюсь </button>
+    </div>
+
+    <div class="info">
+      <span> {{infoString}} </span>
+    </div>
+
+    <div *ngIf="show" class="restart">
+      <button (click)="restartGame()"> Начать заново </button>
+    </div>
+
+    <div *ngIf="!show" class="error">
+      <span> {{errorString}} </span>
+    </div>
+
+    <div *ngIf="!show && services.fileopen && computerTown != ''" class="computer">
+      <span>Город компьютера:</span>
+      <span>{{computerTown}}</span>
+    </div>
+
+    <div *ngIf="show" class="finish">
+      <div class="total">
+        <span> Всего было названо {{allNumber}} города(ов). </span>
+      </div>
+      <div class="human-info">
+        <div class="human-number">
+          <span> Человек назвал: {{humanNumber}} города(ов).</span>
+        </div>
+        <div class="human-towns">
+          <span> Города, которые называл Человек:</span>
+          <span> {{usedHuman}}</span>
+        </div>
+      </div>
+
+      <div class="computer-info">
+        <div class="computer-number">
+          <span> Компьютер назвал: {{computerNumber}} города(ов).</span>
+        </div>
+        <div class="computer-towns">
+          <span> Города, которые называл Компьютер:</span>
+          <span> {{usedComputer}} </span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ya-map [latitude]="globalVar.latit" [longitude]="globalVar.longit" [zoom]="2">
+        <div *ngFor="let item of globalVar.usedTowns">
+          <ya-marker [latitude]="item.latitude" [longitude]="item.longitude" [iconContent]="item.title">
+          </ya-marker>
+        </div>
+      </ya-map>
+    </div>
+
+  </div>
+  <div *ngIf="!globalVar.showContent">
+    <span class="loading">
+      Подождите, идет загрузка...
+    </span>
+  </div>
+</div>
+
+
+

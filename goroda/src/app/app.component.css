@@ -1,0 +1,69 @@
+.wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.loading {
+  margin: 0 auto;
+  text-align: center;
+  vertical_align: middle;
+  display: inline-block;
+  font-size: 25px;
+  color: gray;
+}
+
+.info {
+  color: green;
+}
+
+.error {
+  color: darkred;
+}
+
+.total {
+  margin: 10px;
+  color: saddlebrown;
+}
+
+.human {
+  margin: 10px;
+}
+
+.computer {
+  margin: 10px;
+}
+
+.human-info {
+  margin: 10px;
+  color: darkred;
+}
+
+.computer-info {
+  margin: 10px;
+  color: darkred;
+}
+
+.map-container-inner {
+  height: 300px;
+  width: 400px;
+}
+
+.speech-result-width {
+  width: 90%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.center {
+  padding: 10px;
+  text-align: center;
+}
+
+.mat-input-element:disabled {
+  color: rgba(0,0,0,.9);
+}
+
+.notification {
+  margin-left: 20px;
+  margin-right: 20px;
+}

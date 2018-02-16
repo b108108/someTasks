@@ -1,0 +1,60 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.input {
+  margin: 5px;
+}
+
+.button {
+  margin: 5px;
+}
+
+.count {
+  margin: 5px;
+}
+
+.map {
+  margin: 5px;
+}
+
+.column {
+}
+
+.row {
+  display: inline-block;
+}
+
+.block {
+  position: relative;
+  width: 20px;
+  height: 20px;
+
+  margin: 4px;
+  border-radius: 2px;
+
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.water {
+  //background: lightblue;
+  background-color: #65a6ff;
+}
+
+.earth {
+  //background: saddlebrown;
+  background-color: #fad946;
+}
+
+.none {
+  box-shadow: 0 0 4px 2px black;
+}
+
+.step {
+  box-shadow: 0 0 4px 2px red;
+}

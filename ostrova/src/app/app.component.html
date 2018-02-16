@@ -1,0 +1,36 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="wrapper">
+  <div class="input">
+    <input type="file" id="file" name="file" (change)="services.readFile($event)"/>
+    <button *ngIf="services.fileopen" (click)="services.initializing()">Обновить карту</button>
+  </div>
+
+  <div class="button" *ngIf="!services.finish">
+    <button (click)="services.visualizeSolution()">По шагам</button>
+    <button (click)="services.solution()">Автоматически</button>
+  </div>
+
+  <div class="count" *ngIf="!services.finish || services.count > 0">
+    <span> Количество найденных островов = {{services.count}}</span>
+  </div>
+
+  <div class="map">
+    <div class="column" *ngFor="let i of globalVar.field; let eli = index">
+      <div class="row" *ngFor="let j of globalVar.field[eli]; let elj = index">
+        <div class="block water"
+             [ngClass]="{none: !(eli == services.itemi && elj == services.itemj), step: (eli == services.itemi && elj == services.itemj)}"
+             *ngIf="globalVar.field[eli][elj] == 0">
+          {{globalVar.field[eli][elj]}}
+        </div>
+        <div class="block earth"
+             [ngClass]="{none: !(eli == services.itemi && elj == services.itemj), step: (eli == services.itemi && elj == services.itemj)}"
+             *ngIf="globalVar.field[eli][elj] >= 1">
+          {{globalVar.field[eli][elj]}}
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+

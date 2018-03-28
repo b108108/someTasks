@@ -1,0 +1,5 @@
+#note-stave {
+    border: 2px solid black;
+    overflow: auto;
+    margin: 10px;
+}
